@@ -78,13 +78,16 @@ DATABASES = {
 MONGO_URL = os.getenv('MONGO_URL')
 MONGO_DB_NAME = 'ProyectoMia'
 
-# CORS: permite que React se comunique con Django (puerto 8000)
+# CORS: origenes permitidos (lista separada por coma en la env CORS_ALLOWED_ORIGINS).
+# En producción incluye el dominio de Vercel, ej: https://glamspace.vercel.app
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'http://localhost:5174',
-    'http://127.0.0.1:5174',
+    o.strip() for o in os.getenv(
+        'CORS_ALLOWED_ORIGINS',
+        'http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174,http://127.0.0.1:5174'
+    ).split(',') if o.strip()
 ]
+
+CSRF_TRUSTED_ORIGINS = list(CORS_ALLOWED_ORIGINS)
 
 # ── Encabezados de seguridad ─────────────────────────────────
 SECURE_CONTENT_TYPE_NOSNIFF = True
