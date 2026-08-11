@@ -78,10 +78,12 @@ DATABASES = {
 MONGO_URL = os.getenv('MONGO_URL')
 MONGO_DB_NAME = 'ProyectoMia'
 
-# CORS: permite que React (puerto 5173) se comunique con Django (puerto 8000)
+# CORS: permite que React se comunique con Django (puerto 8000)
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5174',
 ]
 
 # ── Encabezados de seguridad ─────────────────────────────────
