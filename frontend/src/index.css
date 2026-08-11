@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --pink: #E8547A;
+  --pink-light: #FDF0F3;
+  --pink-mid: #F9D4DF;
+  --pink-dark: #C23660;
+  --beige: #FDF6F0;
+  --beige-card: #FFF9F6;
+  --text: #2C1A22;
+  --muted: #9B7A86;
+  --border: #F2DDE5;
+  --white: #FFFFFF;
+}
+
+.dark {
+  --pink: #FF7A9C;
+  --pink-light: #3A2230;
+  --pink-mid: #4A2A3A;
+  --pink-dark: #FF9DB8;
+  --beige: #1C1216;
+  --beige-card: #24161C;
+  --text: #F5E8EC;
+  --muted: #B08A98;
+  --border: #3A2630;
+  --white: #24161C;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', 'Helvetica Neue', sans-serif;
+  background: var(--beige);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--pink-mid); border-radius: 4px; }
+
+/* Espacio para navbar inferior fija */
+main { padding-bottom: 80px; }
+
+/* ── Navbar inferior (móvil) ─────────────────────────── */
+.nav-inferior {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  z-index: 20;
+  padding: 6px 0 20px;
+}
+
+.btn-crear { margin-top: -22px; }
+
+/* ── Pantallas grandes (>= 768px) ────────────────────── */
+@media (min-width: 768px) {
+  main { padding-bottom: 120px; }
+
+  .nav-inferior {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 16px;
+    width: min(560px, calc(100% - 32px));
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-crear { margin-top: -14px; }
+}
+
+/* ── Animaciones ──────────────────────────────────────── */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  60%  { transform: scale(1.08); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  30%      { transform: scale(1.35); }
+  60%      { transform: scale(0.92); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Sombra rosa suave reutilizable */
+.shadow-rosa {
+  box-shadow: 0 10px 30px rgba(232, 84, 122, 0.12);
+}
+
+/* Gradiente rosa reutilizable */
+.gradiente-rosa {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 100%);
+}
