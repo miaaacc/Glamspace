@@ -2,7 +2,7 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/tu_proyecto_django/wsgi.py",
+      "src": "backend/config/wsgi.py",
       "use": "@vercel/python"
     },
     {
@@ -16,7 +16,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/tu_proyecto_django/wsgi.py"
+      "dest": "backend/config/wsgi.py"
     },
     {
       "src": "/(.*)",
